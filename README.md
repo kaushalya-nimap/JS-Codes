@@ -20,7 +20,7 @@ Code 3: Remove Duplicate characters from array of element using filter
 var myArray = ['a', 1, 'a', 2, '1'];
 var unique = myArray.filter((value, index, arr) => arr.indexOf(value) === index);
 ================================================================================================================================================================================
-Code 4:String reverse without reversing of individual words (Array of elements can be reverse with reverse() method but for string it is won't possible so required to split 
+Code 4:String reverse without reversing of individual words (Array of elements can be reverse with reverse() method but for string it is not possible so required to split 
 and then join().
 METHOD 1:-
 function removeDuplicates(){
