@@ -247,4 +247,206 @@ function getSumPairZero(array)
 const result = getSumPairZero([-5,-4,-3,-2,-1,0,1,2,3,4,5])
 console.log(result)
 ================================================================================================================================================================================
+Code 18:To find the largest pair of the 2 elements using indexing with unsorted elements
+function largestPairSumofTwo(numbers){
+    const num = numbers.sort((a, b) => b - a);
+    console.log(num)
+    return num[0] + num[1];
+}
+const result = largestPairSumofTwo([9,7,8,4,5,6,1,2,3])
+console.log(result)
+================================================================================================================================================================================
+Code 19:To find unique values from 2 arrays and keep into one array.
+function uniqueElements(arr1,arr2){
+   let arr =[...arr1,...arr2];
+   let array =[...new Set(arr)]
+   console.log(array)
+}
+uniqueElements([1,2,3,4,4],[2,3,4,5,6])
+================================================================================================================================================================================
+Code 20:Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz". 
+For numbers which are multiples of both three and five, print "FizzBuzz"
+for (var i=1; i <= 20; i++)
+{
+    if (i % 15 == 0)
+        console.log("FizzBuzz");
+    else if (i % 3 == 0)
+        console.log("Fizz");
+    else if (i % 5 == 0)
+        console.log("Buzz");
+    else
+        console.log(i);
+}
+================================================================================================================================================================================
+Code 21:Uppercase of each first letter of a words 
+function upperCaseFirsstLetter(){
+   var string ="India is my country";
+   var words = string.toLowerCase().split(" ")
+   for( var i=0; i<words.length; i++) {
+      words[i]=words[i][0].toUpperCase() + words[i].slice(1) //slice is used here to give all the letters except first letter.
+      }
+   return words.join(" ")
+}
+console.log(upperCaseFirsstLetter())
+================================================================================================================================================================================
+Code 22: Uppercase of each first letter of a words using map function
+function upperCaseFirsstLetter(){
+   var string ="India is my country";
+   var words = string.toLowerCase().split(" ").map((ele)=>{
+               return ele[0].toUpperCase() + ele.slice(1)
+   })
+   return words.join(" ")
+}
+console.log(upperCaseFirsstLetter())
+================================================================================================================================================================================
+Code 23: To check ending of the string with given character/s using inbuild function
+function confirmEnding(str,target){
+   return str.endsWith(target) //true
+}
+console.log(confirmEnding("priya","a"))
+===============================================================================================================================================================================
+Code 24:To find the largest elements fro the 2 dimensional array 
+function largestFromArray(arr){
+   var max=[];
+   for(var i=0; i<arr.length;i++){
+     var tempMax =arr[i][0] //first elements of the 4 internal arrays i,e(1,5,45,89
+     for(var j=0; j<arr[i].length; j++){
+        var currElement = arr[i][j];
+        if(currElement>=tempMax){
+          tempMax = currElement
+        }
+     }
+      max.push(tempMax)
+   }
+  console.log(max)
+   return max;
+}
+largestFromArray([[1,2,3,4],[5,6,7,9],[45,76,2,1],[89,90,87,9]])
+-----------
+METHOD 2
+---
+function largestFromArray(arr){
+   var max=[0,0,0,0];
+   for(var i=0; i<arr.length;i++){
+      for(var j=0; j<arr[i].length; j++)
+      {
+          if(arr[i][j]>=max[i]){
+          max[i] = arr[i][j]
+        }
+      }
+   }
+  console.log(max)
+  return max;
+}
+largestFromArray([[1,2,3,4],[5,6,7,9],[45,76,2,1],[89,90,87,9]])
+================================================================================================================================================================================
+Code 25:To print a string n number of times.
+function repeatStrinNumTimes(str, num){
+if (num<1) return ""
+return str.repeat(num)
+}
+console.log(repeatStrinNumTimes("priya",3))
+----
+METHOD 2
+function repeatStrinNumTimes(str, num){
+var final="";
+if(num<0) return ""
+for(var i=0; i<num;i++)
+{
+  final=final+str
+}
+return final
+}
+console.log(repeatStrinNumTimes("priya",3))
+================================================================================================================================================================================
+Code 26:Truncate a string using slice method
+function truncateString(str, num){
+if(num<=3) return str.slice(0,num)
+return str.slice(0,num-3)+"..." //retuen only 4 digits thats why subtracted from 3
+}
+console.log(truncateString("priyabagde",2)) //pr
+console.log(truncateString("priyabagde",4)) //p... //retuen only 4 digits
+================================================================================================================================================================================
+Code 27: Converting one dimensional array into n dimensional array using slice
+function chunkArrayInGroup(arr, size){
+  var group=[]
+  while(arr.length>0){
+  group.push(arr.slice(0, size))
+  arr = arr.slice(size)
+  }
+  return group
+}
+console.log (chunkArrayInGroup(['a','b','c','d'],2)) //[["a", "b"], ["c", "d"]]
+================================================================================================================================================================================
+Code 28:To find only truthy values
+function removeFalseValue(arr){
+ var trueth = []
+ for (var item of arr){
+   if(item){
+      trueth.push(item)
+   }
+ }
+ return trueth
+}
+console.log(removeFalseValue(["priya", 0 ,"", false, null,undefined, "ate", Nan ,9 ])) //["priya","ate",9]
+---
+METHOD 2
+function removeFalseValue(arr){
+  return arr.filter((item)=>{
+                return item})
+}
+console.log(removeFalseValue(["priya", 0 ,"", false, null,undefined, "ate", 9 ]))
+================================================================================================================================================================================
+Code 29:Checking all letters from second word present in first word.
+function characterPresent(arr){
+  var first = arr[0].toLowerCase()
+  var second = arr[1].toLowerCase()
+  for (var letter of second){
+    if(!first.includes(letter)){
+      return false
+    }
+  }
+  return true
+}
+console.log(characterPresent(["hello","hey"]))
+---METHOD 2
+function characterPresent(arr){
+  var first = arr[0].toLowerCase()
+  var second = arr[1].toLowerCase()
+  for (var letter of second){
+    if(first.indexOf(letter)== -1){ //-1 means not found in array
+      return false
+    }
+  }
+  return true
+}
+console.log(characterPresent(["hello","he"]))
+-------METHOD 3
+function characterPresent(arr){
+  var first = arr[0].toLowerCase()
+  var second = arr[1].toLowerCase()
+  for (var i=0; i<second.length; i++){
+    if(!first.includes(second[i])){ //-1 means not found in array
+      return false
+    }
+  }
+  return true
+}
+console.log(characterPresent(["hello","he"]))
+================================================================================================================================================================================
+Code 30:Remove duplicate that is display unique elements from 2 array by merging or concating both the array
+function uniquefromArrays(arr1, arr2){
+ let arr = [...arr1, ...arr2]
+ let unique = [...new Set(arr)];
+ return unique
+}
+console.log(uniquefromArrays([1,2,3,4], [2,3,4,5])) //[1,2,3,4,5]
+================================================================================================================================================================================
+
+
+
+
+
+
+
 
