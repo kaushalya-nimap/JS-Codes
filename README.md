@@ -338,6 +338,10 @@ function largestFromArray(arr){
   console.log(max)
   return max;
 }
+---Method 3
+function largestFromArray(arr){
+    return arr.map((subArray)=>Math.max(...subArray))
+}
 largestFromArray([[1,2,3,4],[5,6,7,9],[45,76,2,1],[89,90,87,9]])
 ================================================================================================================================================================================
 Code 25:To print a string n number of times.
