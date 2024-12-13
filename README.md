@@ -504,6 +504,111 @@ Way 7: Explicitly Remove Array Elements Using the Delete Operator
          delete ar[4]; // delete element with index 4
          console.log( ar ); // [1, 2, 3, 4, undefined, 6]
 ================================================================================================================================================================================
+Code 33: Currying function example.
+function sum(a){
+  return function sum(b){
+    return function sum(c){
+      return function sum(d){
+         return a+b+c+d;
+      }
+    }
+  }
+}
+console.log(sum(1)(2)(3)(4))
+================================================================================================================================================================================
+Code 34: Find SUM, PRODUCT AND AVERAGE of the numbers //accumulation means collection
+let arr=[1,2,3,4,5]
+let sum = arr.reduce((accum, curr) =>{
+    return accum + curr;
+})
+console.log(sum) //15
+OR
+let sum = arr.reduce((accum, curr) =>{
+    return accum + curr;
+},5) // can set initial value as 5 also
+console.log(sum) //20
+let product = arr.reduce((accum, curr) =>{
+    return accum * curr;
+})
+console.log(product)//120
+let average = arr.reduce((accum, curr, index, array) =>{
+    let total = accum + curr;
+    if(index === array.length-1){
+       return total/array.length
+    }
+    return total
+})
+console.log(average)//3
+================================================================================================================================================================================
+Code 35:Convert a 2D array into 1D using reduce and FLAT 
+const arr = [
+               ['a','b'],
+               ['c','d'],
+               ['e','f'],
+            ]
+const flatArr = arr.reduce((accum, curr)=>{
+return accum.concat(curr)
+})
+console.log(flatArr) //["a", "b", "c", "d", "e", "f"]
+OR
+const arr = [
+['a','b'],
+['c','d'],
+['e',['f','g']],
+]
+console.log(arr.flat(2)) //["a", "b", "c", "d", "e", "f"] //bydefault flat has 1 as argument
+//arr.flat([depth]); ---here depth specifies how deep the nested array structure should be flattened.
+================================================================================================================================================================================
+code 36: Reverse of a nuber using converting into string
+function reverseNumber(input){
+return(
+    parseFloat(input.toString().split('').reverse().join(''))*Math.sign(input)
+)
+}
+console.log(reverseNumber(123)) //321
+================================================================================================================================================================================
+Code 37:To find the closest number in an array
+const needle = 5;
+const numbers = [1, 10, 7, 2, 4, 9];
+numbers.sort((a, b) => {
+    return Math.abs(needle - a) - Math.abs(needle - b);
+})
+console.log(numbers[0]);
+================================================================================================================================================================================
+Code 38:To check whether particular word/number present in sentence or not using inbuilt function
+function wordInSentence(str){
+  return str.includes("world"); //true
+}
+console.log(wordInSentence("Hello world, welcome to the universe."))
+OR
+var nums =[0,1,3,5,6,7,8,9,7]
+console.log(nums.includes(9)) //true
+OR
+var item=3
+console.log(nums.some(x => x === item)) //true
+================================================================================================================================================================================
+code 39: To check wheather property exist or not in object
+let student ={
+  name : "priya",
+  age: 20
+}
+console.log('name' in student)
+OR
+console.log(student.hasOwnProperty('name'))
+================================================================================================================================================================================
+code 40: To dlete the property of an object
+let student ={
+  name : "priya",
+  age: 20,
+  city: "pune"
+}
+delete student.age;
+console.log(student)
+OR
+delete student['name']
+console.log(student)
+================================================================================================================================================================================
+
 
 
 
