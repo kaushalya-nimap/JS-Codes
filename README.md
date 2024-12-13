@@ -446,7 +446,64 @@ function uniquefromArrays(arr1, arr2){
 }
 console.log(uniquefromArrays([1,2,3,4], [2,3,4,5])) //[1,2,3,4,5]
 ================================================================================================================================================================================
-
+Code 31: To add all elements of array OR to add the elements between the smallest and the biggest value in an array
+function sumFromStartToEnd(arr){
+   // let min=Math.min(...arr)
+    //let max=Math.max(...arr)
+    //let sum=0
+    //for(let i=min;i<=max;i++){
+        sum=sum+i
+    }
+    return sum
+    OR
+    return arr.reduce((acc,cur)=>acc+cur)
+}
+console.log(sumFromStartToEnd([1,4,9,10]))
+================================================================================================================================================================================
+Code 32:Remove or Delete elements from an array using various ways
+Way 1: Removing Elements from End of a JavaScript Array
+       var ar = [1, 2, 3, 4, 5, 6]; 
+       ar.length = 4; // set length to remove elements
+       console.log( ar ); // [1, 2, 3, 4]   
+Way 2: Removing Elements from Beginning of a JavaScript Array
+        var ar = ['zero', 'one', 'two', 'three'];
+        ar.shift(); // returns "zero"
+        console.log( ar ); // ["one", "two", "three"]        
+Way 3: Using Splice to Remove Array Elements in JavaScript
+        var list = ["bar", "baz", "foo", "qux"];
+        list.splice(0, 2); // Starting at index position 0, remove two elements ["bar", "baz"] and retains ["foo", "qux"].        
+Way 4: Removing Array Items By Value Using Splice
+       var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+       for( var i = 0; i < arr.length; i++){ 
+           if ( arr[i] === 5) { 
+              arr.splice(i, 1); 
+           }
+       } // [1, 2, 3, 4, 6, 7, 8, 9, 0]      
+       OR       
+        var arr = [1, 2, 3, 4, 5, 5, 6, 7, 8, 5, 9, 0];
+        for( var i = 0; i < arr.length; i++){                             
+        if ( arr[i] === 5) { 
+            arr.splice(i, 1); 
+            i--; 
+          }
+        } // [1, 2, 3, 4, 6, 7, 8, 9, 0]       
+Way 5: Using the Array filter Method to Remove Items By Value
+        var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        var filtered = array.filter(function(value, index, arr){ 
+        return value > 5;
+        }); //filtered => [6, 7, 8, 9]  
+Way 6: Making a Remove Method
+       function arrayRemove(arr, value) { 
+        return arr.filter(function(ele){ 
+            return ele != value; 
+        });
+    }
+    var result = arrayRemove(array, 6); // result = [1, 2, 3, 4, 5, 7, 8, 9, 0]   
+Way 7: Explicitly Remove Array Elements Using the Delete Operator
+         var ar = [1, 2, 3, 4, 5, 6];
+         delete ar[4]; // delete element with index 4
+         console.log( ar ); // [1, 2, 3, 4, undefined, 6]
+================================================================================================================================================================================
 
 
 
