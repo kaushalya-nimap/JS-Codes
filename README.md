@@ -30,7 +30,6 @@ function removeDuplicates(){
 }
 console.log(removeDuplicates()) 
 output = "aidnI si ym yrtnuoc"
-
 METHOD 2:-
 function removeDuplicates() {
     var string = "India is my country";
