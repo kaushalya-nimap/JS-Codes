@@ -607,6 +607,83 @@ OR
 delete student['name']
 console.log(student)
 ================================================================================================================================================================================
+Code 41: Grouping of anagrams(92)
+let collectAnagrams = (words) => {
+    let anagrams = {}
+    let collectedAnagrams = []
+    for (let word of words)
+    {
+        let sortedWord = word.split('').sort().join('') 
+        anagrams[sortedWord] = anagrams[sortedWord]  || [] 
+        anagrams[sortedWord].push(word) 
+         //can also use the .notation like anagram.key=sortedWord but that would display key as the key rather than abg
+    }
+    //console.log(anagrams)
+    //the for in loop iterates over the key i.e anagrams[abg] and pushes the value in the item i.e abg key to collectedAnagrams
+    for (let item in anagrams)
+    {
+        collectedAnagrams.push(anagrams[item]) 
+    }
+    return collectedAnagrams
+}
+console.log(collectAnagrams(['bag', 'gab', 'foo', 'abg', 'oof', 'ofo']))
+================================================================================================================================================================================
+code 42:Move all zeroes to beginning or end of an array(94)
+function moveZeroes(arr){
+    for(let i=0;i<arr.length;i++){
+        if(arr[i]===0){
+        let temp=arr.splice(i,1)
+        arr.unshift(temp[0])
+        }
+        //console.log(temp)
+    }
+    return arr
+}
+console.log(moveZeroes([1,0,4,8,6,0,8,3,39,0]))
+================================================================================================================================================================================
+code 43:Calculating the sum of all elements in a jagged array using flat(97)
+function sumArray(ar) {
+    var flatArray = ar.flat(Infinity);
+    var sum = 0;
+    for (var el of flatArray) {
+        sum += el;
+    }
+    return sum;
+}
+console.log(sumArray([1, 2, [3, [4], [5, 6]], [7]]));  // Output: 28
+================================================================================================================================================================================
+code 44:finding 3 element from array whose sum is equal to 0
+function triplets(arr){
+    arr.sort((a,b)=>a-b)
+    for(let i=0;i<arr.length-2;i++){
+        for(let j=i+1;j<arr.length-1;j++){
+            for(let k=j+1;k<arr.length;k++){
+                if(arr[i]+arr[j]+arr[k]===0)
+               console.log(`${arr[i]}, ${arr[j]},${arr[k]}`)
+            }
+        }
+    }
+}
+let arr = [1, 2, 5, 3, -2, 0, 1, -1, 5, 6, -2, -1];
+triplets(arr)
+================================================================================================================================================================================
+code 45:String Compression (100)
+function stringCompression (str) {
+  var output = '';
+  var count = 0; 
+  for (var i = 0; i < str.length; i++) 
+  {
+    count++;
+    if (str[i] !== str[i+1]) //if a is not equal to b
+    {
+      output += str[i] + count; //a+4
+      count = 0; //for b it will start from zero
+    }
+  }
+  console.log(str+" "+output);
+}
+stringCompression('aa');
+================================================================================================================================================================================
 
 
 
