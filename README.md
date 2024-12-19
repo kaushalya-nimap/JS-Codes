@@ -684,6 +684,23 @@ function stringCompression (str) {
 }
 stringCompression('aa');
 ================================================================================================================================================================================
+Code 46: To check weather perfect number or not(98)
+function is_perfect(num){
+    let temp=0
+    for(let i=1;i<=num/2;i++){
+        if(num%i===0){
+            temp+=i
+        }
+    }
+    if(temp===num)
+    console.log('is a perfect number')
+    else
+    console.log('is not a perfect number')
+    
+}
+is_perfect(10)
+================================================================================================================================================================================
+
 
 
 
