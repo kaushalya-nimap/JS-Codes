@@ -626,7 +626,7 @@ let collectAnagrams = (words) => {
     }
     return collectedAnagrams
 }
-console.log(collectAnagrams(['bag', 'gab', 'foo', 'abg', 'oof', 'ofo']))
+console.log(collectAnagrams(['bag', 'gab', 'foo', 'abg', 'oof', 'ofo'])) //[ [ 'bag', 'gab', 'abg' ], [ 'foo', 'oof', 'ofo' ] ]
 ================================================================================================================================================================================
 code 42:Move all zeroes to beginning or end of an array(94)
 function moveZeroes(arr){
@@ -682,7 +682,7 @@ function stringCompression (str) {
   }
   console.log(str+" "+output);
 }
-stringCompression('aa');
+stringCompression('aa'); //a2
 ================================================================================================================================================================================
 Code 46: To check weather perfect number or not(98)
 function is_perfect(num){
@@ -696,7 +696,6 @@ function is_perfect(num){
     console.log('is a perfect number')
     else
     console.log('is not a perfect number')
-    
 }
 is_perfect(10)
 ================================================================================================================================================================================
