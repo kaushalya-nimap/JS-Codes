@@ -576,4 +576,144 @@ console.log(text.match(/Hello/g));  // ['Hello', 'Hello']
 js
 Copy code
 console.log(String.fromCharCode(65));  // 'A'
+-------------------NTTS Modules ----------
+1. TRY CATCH FINALLY
+function auth(user,password){
+    try{
+        if(user==="admin"&&password==="12345")
+        console.log('valid credentials')
+        else
+        throw new Error('Invalid credentials')
+    }
+    catch(error){
+        console.log(error.message)
+    }
+    finally{
+        console.log('Authentication completed')
+    }
+}
+//auth('admin','12345')
+//auth('user','1234')
+
+function multi(){
+    try{
+        let n=Math.random()
+        if(n>0.5)
+        console.log(`Passed--Random number ${n} is more than 0.5`)
+        else
+        throw new Error(`Failed---Random number ${n} is less than 0.5`)
+    }
+    catch(err){
+        console.log(err.message)
+    }
+    finally{
+        console.log('Function completed')
+    }
+}
+multi()
+
+2. Event Loop and Microtasks
+The event loop decides the execution order of tasks in JavaScript.
+Example:
+
+javascript
+Copy code
+console.log('start') //1
+setTimeout(()=>{
+    console.log('set timeout invoked')
+},0) //4
+const p=new Promise((resolve,reject)=>{
+    resolve('Promise resolved')
+})
+p.then((res)=>console.log(res))//3
+console.log('end') //2
+// Output: Start, End, Promise, Timeout
+	• Microtasks (like Promise.then) run before macrotasks (like setTimeout).
+	
+3.Use of this in normal and arrow function
+In normal functions, the value of this depends on how the function is called:
+	• If called as a method of an object, this refers to the object.
+	• If called as a standalone function, this refers to the global object (window in browsers, global in Node.js) or undefined in strict mode.,can resolve this issue using call apply bind only for the normal function
+Eg:-
+const obj = {
+  value: 42,
+  normalFunc: function () {
+    console.log(this.value); // `this` refers to `obj`
+  },
+};
+obj.normalFunc(); // Logs: 42
+const standalone = obj.normalFunc;
+standalone(); // Logs: undefined (or the global object if not in strict mode)
+///resolving the issue using a const
+const obj = {
+    value: 10,
+    showfunc: function () {
+        const self = this; // Store `this` reference
+        console.log(self.value); // Logs 10
+
+        function inner() {
+            console.log(self.value); // Logs 10
+            function inner1() {
+                console.log(self.value); // Logs 10
+            }
+            inner1();
+        }
+        inner();
+    }
+};
+
+obj.showfunc();
+////using call apply bind
+const obj = {
+    value: 10,
+    showfunc: function () {
+        console.log(this.value); // Logs 10
+
+        function inner() {
+            console.log(this.value); // Logs 10
+            function inner1() {
+                console.log(this.value); // Logs 10
+            }
+            inner1.bind(this)(); // Bind `this` to `obj`
+        }
+        inner.bind(this)(); // Bind `this` to `obj`
+    }
+};
+obj.showfunc();
+In Arrow functions do not have their own this. They inherit this from their lexical scope (where they are defined).
+This makes arrow functions ideal for cases where you want to preserve the this context of the surrounding code.
+const obj={
+    value:10,
+    showfunc:function(){
+        console.log(this.value)
+        const inner=()=>{
+        console.log(this.value)
+        }
+        inner()
+        //inner.call(this)
+    }
+}
+obj.showfunc()
+
+const obj={
+    value:10,
+    showfunc:function(){
+        console.log(this.value)
+        const inner=()=>{
+            console.log(this.value)
+            const inner1=()=>{
+                console.log(this.value)
+            }
+            inner1()
+        }
+        inner()
+    }
+}
+obj.showfunc()
+10
+10
+10
+
+
+
 
