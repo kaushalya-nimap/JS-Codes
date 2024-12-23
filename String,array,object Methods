@@ -713,6 +713,46 @@ obj.showfunc()
 10
 10
 10
+4.Event bubbling and capturing example
+  <title>Like button event capturing and bubbling example</title>
+  </head>
+  <body>
+    <div id="commentSection">
+      <div class="comment" data-id="1">
+        <p>User1: This is a great post!</p>
+        <button class="likeBtn">Like</button>
+      </div>
+      <div class="comment" data-id="2">
+        <p>User2: I totally agree!</p>
+        <button class="likeBtn">Like</button>
+      </div>
+      <div class="comment" data-id="3">
+        <p>User3: I totally agree!</p>
+        <button class="likeBtn">Like</button>
+      </div>
+    </div>
+    <script>
+      const commentSection = document.getElementById("commentSection");
+      // Using event bubbling to handle clicks on all "Like" buttons
+      commentSection.addEventListener("click", (event) => {
+        // Check if the click happened on a "Like" button
+        if (event.target.classList.contains("likeBtn")) {
+          const commentId = event.target.closest(".comment").dataset.id;
+          alert(`Liked comment ID: ${commentId}`);
+        }
+      });
+      // Using event capturing to log clicks before they reach the buttons
+      document.addEventListener(
+        "click",
+        (event) => {
+          console.log(`Capturing phase: Clicked on ${event.target.tagName}`);
+        },
+        true // Enable capturing phase
+      );
+    </script>
+  </body>
+</html>
+
 
 
 
